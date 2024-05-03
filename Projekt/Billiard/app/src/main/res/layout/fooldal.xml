@@ -7,6 +7,14 @@
     android:orientation="vertical"
 
     android:background="#4793AF">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Light"
+        tools:ignore="MissingConstraints" />
     <LinearLayout
         android:id="@+id/main"
         android:layout_marginTop="20dp"
@@ -141,4 +149,5 @@
         android:textColorLink="#8B322C"
         android:textSize="30sp"
         android:textStyle="bold" />
+
 </LinearLayout>

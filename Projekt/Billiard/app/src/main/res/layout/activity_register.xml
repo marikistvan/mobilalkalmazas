@@ -148,6 +148,8 @@
             android:layout_marginStart="40dp"
             android:text="@string/cancel"
             android:onClick="cancel"/>
+
     </LinearLayout>
+
 
 </RelativeLayout>
