@@ -5,23 +5,15 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.FrameLayout;
-import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import static android.view.View.GONE;
-import static android.view.View.VISIBLE;
-
-public class BilliardListActivity extends AppCompatActivity {
-    private static final String LOG_TAG = BilliardListActivity.class.getName();
+public class BookingActivity extends AppCompatActivity {
+    private static final String LOG_TAG = BookingActivity.class.getName();
     private FirebaseUser user;
-    private FrameLayout redCircle;
-    private TextView countTextView;
-    private int cartItems;
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fooldal);
@@ -35,11 +27,11 @@ public class BilliardListActivity extends AppCompatActivity {
         androidx.appcompat.widget.Toolbar toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
     }
-   @Override
-   public boolean onCreateOptionsMenu(Menu menu) {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.poolmenu,menu);
-       return true;
-   }
+        return true;
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -75,6 +67,4 @@ public class BilliardListActivity extends AppCompatActivity {
         Intent intent=new Intent(this,ContactActivity.class);
         startActivity(intent);
     }
-
-
 }

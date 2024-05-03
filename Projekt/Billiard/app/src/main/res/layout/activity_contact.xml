@@ -15,6 +15,7 @@
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.Light"
         tools:ignore="MissingConstraints" />
+
     <LinearLayout
         android:id="@+id/main"
         android:layout_marginTop="20dp"
@@ -33,34 +34,25 @@
             android:textSize="30dp"
             android:fontFamily="sans-serif-condensed"
             android:layout_weight="1"
-            android:textColor="@color/yellow"
+            android:textColor="#FFC470"
             android:textStyle="bold"
-            android:text="Főoldal" />
+            android:text="Kapcsolat" />
     </LinearLayout>
     <LinearLayout
-        android:layout_marginTop="20dp"
+
+        android:layout_marginTop="40dp"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="130dp"
         app:layout_constraintTop_toBottomOf="@id/main"
         android:background="#8B322C"
         android:orientation="vertical">
-
+        >
         <TextView
-            android:id="@+id/open"
+            android:id="@+id/mobil"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Nyitvatartás"
-            android:textColor="#DD5746"
-            android:textSize="25sp"
-            android:textStyle="bold" />
-        <TextView
-            android:id="@+id/monday"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="hétfő : 16:00-22:00"
+            android:text="mobil : +36 50 666 0666"
             android:textColor="#FFC470"
             android:gravity="center"
             android:textStyle="bold"
@@ -71,7 +63,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="kedd : 16:00-22:00"
+            android:text="email : marik.istvan@stud.u-szeged.hu"
             android:textColor="#FFC470"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -82,57 +74,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="szerda : 16:00-22:00"
+            android:text="Szeged 6700, Devil utca 666."
             android:textColor="#FFC470"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@id/thuesday" />
-        <TextView
-            android:id="@+id/thursday"
-
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="csütörtök : 16:00-22:00"
-            android:textColor="#FFC470"
-            android:textSize="18sp"        android:textStyle="bold"
-
-            app:layout_constraintTop_toBottomOf="@id/wednesday" />
-        <TextView
-            android:id="@+id/friday"
-            android:layout_marginTop="10dp"
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="péntek : 16:00-2:00"
-            android:textColor="#FFC470"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/thursday" />
-        <TextView
-            android:id="@+id/saturday"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="szombat: 16:00-2:00"
-            android:textColor="#FFC470"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/friday" />
-        <TextView
-            android:id="@+id/sunday"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="vasárnap: 16:00-2:00"
-            android:textColor="#FFC470"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/saturday" />
 
     </LinearLayout>
+
+    >
 </LinearLayout>

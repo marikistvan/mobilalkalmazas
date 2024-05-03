@@ -36,7 +36,6 @@
         android:title="Nyitvartás"
         app:actionViewClass="android.widget.SearchView"
         app:showAsAction="ifRoom"
-        android:icon="@drawable/ic_calendar"
         android:orderInCategory="1"
         />
     <item
@@ -44,7 +43,6 @@
         android:title="Elérhetőség"
         app:actionViewClass="android.widget.SearchView"
         app:showAsAction="ifRoom"
-        android:icon="@drawable/ic_calendar"
         android:orderInCategory="2"
         />
     <item

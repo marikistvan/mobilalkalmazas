@@ -5,91 +5,132 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="#4793AF">
+
+    <TextView
+        android:id="@+id/logo"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="0dp"
+        android:background="@color/orrange"
+        android:fontFamily="sans-serif-condensed"
+        android:text="Bejelentkezés"
+        android:gravity="center_vertical|center"
+        android:textColor="@color/yellow"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewUsernameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="46dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/orrange"
+        android:text="Felhasználónév:"
+        android:textColor="@android:color/white"
+        android:textSize="15dp"
+        android:gravity="center_vertical|start"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logo" />
+
 
     <EditText
-        android:id="@+id/editTextUserName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/name"
-        android:inputType="text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.276"
-        tools:layout_editor_absoluteX="0dp">
 
-    </EditText>
+        android:id="@+id/editTextUserName"
+        android:background="@color/red"
+        android:layout_width="305dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Felhasználónév"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/textViewUsernameLabel"
+        app:layout_constraintTop_toBottomOf="@id/logo" />
+
+
+    <TextView
+        android:id="@+id/textViewPasswordLabel"
+        android:layout_width="107dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/orrange"
+        android:gravity="center_vertical|center"
+        android:text="jelszó:"
+        android:textColor="@android:color/white"
+        android:textSize="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextUserName" />
+
 
     <EditText
         android:id="@+id/editTextPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="305dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/red"
         android:ems="10"
-        android:hint="@string/password"
+        android:hint="Jelszó..."
+        android:textStyle="italic"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextUserName"
-        app:layout_constraintVertical_bias="0.056"
-        tools:layout_editor_absoluteX="0dp">
-
-    </EditText>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/textViewPasswordLabel"
+        app:layout_constraintTop_toBottomOf="@id/editTextUserName" />
 
     <Button
         android:id="@+id/loginButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="363dp"
+        android:layout_height="67dp"
         android:onClick="login"
         android:text="@string/login"
+        android:textColor="@color/yellow"
+        android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPassword"
-        app:layout_constraintVertical_bias="0.151" />
+        app:layout_constraintVertical_bias="0.148" />
 
-    <Button
-        android:id="@+id/loginRegister"
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/textViewRegister"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:autoLink="web"
+        android:clickable="true"
         android:onClick="register"
-        android:text="@string/registration"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textStyle="bold"
+        android:textSize="15dp"
+        android:text="Nincs még fiókod? Regisztrálj itt..."
+        android:textColorLink="@color/blue"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.479"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginButton"
-        app:layout_constraintVertical_bias="0.099" />
-
-    <Button
-        android:id="@+id/guestLoginButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:onClick="loginAsGuest"
-        android:text="Bejelentkezés vendégként"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginRegister"
-        app:layout_constraintVertical_bias="0.124"
-        tools:ignore="=Onlick" />
+        app:layout_constraintTop_toBottomOf="@id/loginButton" />
 
     <Button
         android:id="@+id/googleSignInButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Bejelentkezés google fiókkal"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="344dp"
+        android:layout_height="103dp"
         android:onClick="loginWithGoogle"
+        android:text="Folytatás a Google-val"
+        android:textColor="@color/yellow"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/guestLoginButton"
-        app:layout_constraintVertical_bias="0.243"
-        tools:ignore="=Onlick"/>
-
-
+        app:layout_constraintTop_toBottomOf="@+id/textViewRegister"
+        app:layout_constraintVertical_bias="0.305"
+        tools:ignore="=Onlick" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

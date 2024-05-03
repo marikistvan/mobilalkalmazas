@@ -24,7 +24,7 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class RegisterActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+public class RegisterActivity extends AppCompatActivity {
     private static final String LOG_TAG = RegisterActivity.class.getName();
     private static final String PREF_KEY = RegisterActivity.class.getPackage().toString();
     private static final int SECRET_KEY=99;
@@ -45,37 +45,22 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_register);
-        // Bundle bundle=getIntent().getExtras();
-        //int_secret_key= bundle.getInt("SECRET_KEY");
         int secret_key= getIntent().getIntExtra("SECRET_KEY",0);
         if(secret_key != 99){
             finish();
         }
-
         userNameEditText=findViewById(R.id.UserNameET);
         userEmailEditText=findViewById(R.id.UserEmailET);
         passwordEditText=findViewById(R.id.PasswordET);
         passwordAginEditText=findViewById(R.id.PasswordAgainET);
         phoneEditText=findViewById(R.id.PhoneEditText);
-        addressEditText=findViewById(R.id.addressEditText);
-        spinner =findViewById(R.id.phoneSpinner);
-        accountTypeGroup=findViewById(R.id.accountTypeGroup);
-        accountTypeGroup.check(R.id.buyerRadioButton);
         preferences=getSharedPreferences(PREF_KEY,MODE_PRIVATE);
         String userName= preferences.getString("username","");
         String password=preferences.getString("password","");
         userNameEditText.setText(userName);
         passwordEditText.setText(password);
         passwordAginEditText.setText(password);
-
-        spinner.setOnItemSelectedListener(this);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.phone_modes, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-
         mAuth=FirebaseAuth.getInstance();
-
         Log.i(LOG_TAG,"onCreate");
     }
     public void cancel(View view) {
@@ -87,19 +72,12 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
         String email=userEmailEditText.getText().toString();
         String password=passwordEditText.getText().toString();
         String passwordAgain=passwordAginEditText.getText().toString();
-        String accountTypeGruop=accountTypeGroup.toString();
         if(!password.equals(passwordAgain)){
             Log.e(LOG_TAG,"Nem egyezik meg a két jelszó!");
             return;
         }
 
         String phoneNumber=phoneEditText.getText().toString();
-        String phoneType=spinner.getSelectedItem().toString();
-        String address=addressEditText.getText().toString();
-
-        int checkedId=accountTypeGroup.getCheckedRadioButtonId();
-        RadioButton radioButton=accountTypeGroup.findViewById(checkedId);
-        String accountType=radioButton.getText().toString();
 
         Log.i(LOG_TAG, " Regisztrált: " + userName + ", jelszo: " + password);
 
@@ -120,7 +98,6 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
     }
     private void startBilliard(/*registered user data*/){
         Intent intent=new Intent(this,BilliardListActivity.class);
-        //intent.putExtra("SECRET_KEY",SECRET_KEY);
         startActivity(intent);
     }
     @Override
@@ -157,16 +134,5 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
     protected void onRestart() {
         super.onRestart();
         Log.i(LOG_TAG,"onRestart");
-    }
-
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        String selected=parent.getItemAtPosition(position).toString();
-        Log.i(LOG_TAG,selected);
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-        //TODO
     }
 }
