@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">Billiard</string>
+    <string name="name">Name</string>
+    <string name="password">Password</string>
+    <string name="login">Bejelentkezés</string>
+    <string name="registration">Regisztráció</string>
+    <string name="user_name">Felhasználónév</string>
+    <string name="email">Email</string>
+    <string name="password_again">jelszó megerősítése</string>
+    <string name="cancel">Mégse</string>
+    <string name="phone_number">telefonszám</string>
+    <string name="phoneSpinner">phoneSpinner</string>
+    <string name="address">postai cím</string>
+    <string name="buyer">vásárló</string>
+    <string name="seller">eladó</string>
+    <string name="somethingGood">VALAMI JÓ</string>
+    <string name="default_web_client_id">654741443168-8gfviubh7n1q2ktak1ia3cmkpeqorrg7.apps.googleusercontent.com</string>
+    <string-array name="phone_modes">
+        <item>Otthoni</item>
+        <item>Munkahelyi</item>
+        <item>Mobil</item>
+        <item>Egyéb</item>
+    </string-array>
 </resources>

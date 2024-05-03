@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "654741443168",
+    "project_id": "pooltablereservation",
+    "storage_bucket": "pooltablereservation.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:654741443168:android:6759e65d0554ed2e2a6905",
+        "android_client_info": {
+          "package_name": "com.example.billiard"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARwVY-LKCV-r6BmgWY4NNxeUQG-vFBcIo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
