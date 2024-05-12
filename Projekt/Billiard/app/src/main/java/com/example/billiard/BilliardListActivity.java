@@ -18,9 +18,6 @@ import static android.view.View.VISIBLE;
 public class BilliardListActivity extends AppCompatActivity {
     private static final String LOG_TAG = BilliardListActivity.class.getName();
     private FirebaseUser user;
-    private FrameLayout redCircle;
-    private TextView countTextView;
-    private int cartItems;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +40,7 @@ public class BilliardListActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
+
         if (id == R.id.log_out_button) {
             FirebaseAuth.getInstance().signOut();
             Log.d(LOG_TAG, "log out-ra kattintottunk");
@@ -55,17 +53,9 @@ public class BilliardListActivity extends AppCompatActivity {
         } else if (id == R.id.opening_hours) {
             Log.d(LOG_TAG, "opening_hours-ra kattintottunk");
             return true;
-        } else if (id == R.id.cart) {
-            Log.d(LOG_TAG, "cart-ra kattintottunk");
-            return true;
-        } else if (id == R.id.booking) {
+        }else if (id == R.id.booking) {
+            startBooking();
             Log.d(LOG_TAG, "booking-ra kattintottunk");
-            return true;
-        } else if (id == R.id.search_bar) {
-            Log.d(LOG_TAG, "search_bar-ra kattintottunk");
-            return true;
-        } else if (id == R.id.setting_button) {
-            Log.d(LOG_TAG, "setting_button-ra kattintottunk");
             return true;
         } else {
             return super.onOptionsItemSelected(item);
@@ -74,6 +64,29 @@ public class BilliardListActivity extends AppCompatActivity {
     private void startContact(){
         Intent intent=new Intent(this,ContactActivity.class);
         startActivity(intent);
+    }
+    private void startBooking(){
+        Intent intent=new Intent(this, BookingActivity.class);
+        startActivity(intent);
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.i(LOG_TAG, "onStart");
+        if (isUserLoggedIn()) {
+            startMainFunctionality();
+        } else {
+            startLoginActivity();
+        }
+
+    }private void startMainFunctionality() {
+        Log.i(LOG_TAG, "Felhasználó be van jelentkezve. Az alkalmazás fő tevékenysége elindítva.");
+    }    private boolean isUserLoggedIn() {
+        return FirebaseAuth.getInstance().getCurrentUser() != null;
+    }
+
+    private void startLoginActivity() {
+        Log.i(LOG_TAG, "Felhasználó nincs bejelentkezve. A bejelentkezési tevékenység elindítva.");
     }
 
 

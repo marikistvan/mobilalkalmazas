@@ -1,15 +1,17 @@
 package com.example.billiard;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
-import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,7 +19,6 @@ import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
-import androidx.core.view.MenuItemCompat;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
@@ -43,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
     private SharedPreferences preferences;
     private FirebaseAuth mAuth;
     private GoogleSignInClient mGoogleSignInClient;
-    private FrameLayout redCircle;
-    private TextView countTextView;
+    private Button loginButton;
+    private Button googleBt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +71,9 @@ public class MainActivity extends AppCompatActivity {
 
         preferences=getSharedPreferences(PREF_KEY,MODE_PRIVATE);
 
+        googleBt=findViewById(R.id.googleSignInButton);
+
+        loginButton=findViewById(R.id.loginButton);
         Log.i(LOG_TAG,"onCreate");
 
     }
@@ -113,19 +117,34 @@ public class MainActivity extends AppCompatActivity {
         String password=passwordET.getText().toString();
 
        // Log.i(LOG_TAG, " Bejelentkezett: " + userName + ", jelszo: " + password);
-        mAuth.signInWithEmailAndPassword(userName,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    Log.d(LOG_TAG, "User log in successfully");
-                    startBilliard();
+        if(userName.length()==0 || password.length()==0){
+            android.app.AlertDialog.Builder alert=new AlertDialog.Builder(this);
+            alert.setTitle("Üres mezők");
+            alert.setMessage("tölsd ki a mezőket!");
+            alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
 
-                }else{
-                    Log.d(LOG_TAG, "User log in fail");
-                    Toast.makeText(MainActivity.this, "User log in fail: : " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                 }
-            }
-        });
+            });
+            alert.create().show();
+        }else{
+            mAuth.signInWithEmailAndPassword(userName,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    Animation anim= AnimationUtils.loadAnimation(MainActivity.this,R.anim.fadein);
+                    loginButton.startAnimation(anim);
+                    if(task.isSuccessful()){
+                        Log.d(LOG_TAG, "User log in successfully");
+                        startBilliard();
+
+                    }else{
+                        Log.d(LOG_TAG, "User log in fail");
+                        Toast.makeText(MainActivity.this, "User log in fail: : " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }
+            });
+        }
     }
     private void startBilliard(){
         Intent intent=new Intent(this,BilliardListActivity.class);
@@ -139,7 +158,21 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        Log.i(LOG_TAG,"onStart");
+        Log.i(LOG_TAG, "onStart");
+        if (isUserLoggedIn()) {
+            startMainFunctionality();
+        } else {
+            startLoginActivity();
+        }
+
+    }private void startMainFunctionality() {
+        Log.i(LOG_TAG, "Felhasználó be van jelentkezve. Az alkalmazás fő tevékenysége elindítva.");
+    }    private boolean isUserLoggedIn() {
+        return FirebaseAuth.getInstance().getCurrentUser() != null;
+    }
+
+    private void startLoginActivity() {
+        Log.i(LOG_TAG, "Felhasználó nincs bejelentkezve. A bejelentkezési tevékenység elindítva.");
     }
 
     @Override
@@ -177,22 +210,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void loginAsGuest(View view) {
-        mAuth.signInAnonymously().addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    Log.d(LOG_TAG, "Anonym User log in successfully");
-                    startBilliard();
-                } else {
-                    Log.d(LOG_TAG, "Anonym User in fail");
-                    Toast.makeText(MainActivity.this, "Anonym User in fail: : " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                }
-            }
-        });
-    }
-
     public void loginWithGoogle(View view) {
+        Animation anim= AnimationUtils.loadAnimation(MainActivity.this,R.anim.blink_anim);
+        googleBt.startAnimation(anim);
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }

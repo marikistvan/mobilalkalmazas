@@ -6,8 +6,11 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -28,11 +31,14 @@ public class RegisterActivity extends AppCompatActivity {
     private static final String LOG_TAG = RegisterActivity.class.getName();
     private static final String PREF_KEY = RegisterActivity.class.getPackage().toString();
     private static final int SECRET_KEY=99;
+
+
     EditText userNameEditText;
     EditText userEmailEditText;
     EditText passwordEditText;
     EditText passwordAginEditText;
     EditText phoneEditText;
+    Button registerGomb;
     EditText addressEditText;
     Spinner spinner;
     RadioGroup accountTypeGroup;
@@ -62,6 +68,15 @@ public class RegisterActivity extends AppCompatActivity {
         passwordAginEditText.setText(password);
         mAuth=FirebaseAuth.getInstance();
         Log.i(LOG_TAG,"onCreate");
+
+        registerGomb=(Button)findViewById(R.id.registerBt);
+        registerGomb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Animation anim= AnimationUtils.loadAnimation(RegisterActivity.this,R.anim.bounce);
+                registerGomb.startAnimation(anim);
+            }
+        });
     }
     public void cancel(View view) {
         finish();

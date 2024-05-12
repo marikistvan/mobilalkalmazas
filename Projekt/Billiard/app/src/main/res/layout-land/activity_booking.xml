@@ -39,14 +39,6 @@
             android:text="Foglalás" />
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="218dp"
-        android:layout_height="129dp"
-        android:layout_gravity="center"
-        app:srcCompat="@drawable/booking"
-        tools:layout_editor_absoluteX="77dp"
-        tools:layout_editor_absoluteY="195dp" />
     <LinearLayout
         android:id="@+id/valami"
         android:layout_width="match_parent"
@@ -99,29 +91,35 @@
 
     <TextView
         android:id="@+id/dateText"
-        android:layout_width="73dp"
-        android:layout_gravity="center"
-        android:layout_height="43dp" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+
     <TextView
         android:id="@+id/timeText"
-        android:layout_width="73dp"
-        android:layout_gravity="center"
-        android:layout_height="43dp" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
 
-    <Button
-        android:id="@+id/dialogButton"
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Show Dialog"/>
-    <Button
-        android:id="@+id/fogalalasButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Foglalás"
-        android:onClick="Booking"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/valami"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:layout_height="match_parent"
+        android:layout_gravity="center">
+
+        <Button
+            android:id="@+id/dialogButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:text="Show Dialog" />
+
+        <Button
+            android:id="@+id/fogalalasButton"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="40dp"
+            android:text="Foglalás"
+            android:onClick="Booking" />
+    </LinearLayout>
 </LinearLayout>

@@ -32,7 +32,7 @@
         android:layout_height="46dp"
         android:layout_marginTop="16dp"
         android:background="@color/orrange"
-        android:text="Felhasználónév:"
+        android:text="email:"
         android:textColor="@android:color/white"
         android:textSize="15dp"
         android:gravity="center_vertical|start"
@@ -43,18 +43,17 @@
     <EditText
 
         android:id="@+id/editTextUserName"
+        android:layout_width="366dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="20dp"
         android:background="@color/red"
-        android:layout_width="305dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="Felhasználónév"
-        android:inputType="text"
+        android:hint="email"
+        android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@id/textViewUsernameLabel"
         app:layout_constraintTop_toBottomOf="@id/logo" />
-
 
     <TextView
         android:id="@+id/textViewPasswordLabel"

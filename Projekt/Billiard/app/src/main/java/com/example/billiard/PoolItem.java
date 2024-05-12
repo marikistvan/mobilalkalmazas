@@ -1,16 +1,20 @@
 package com.example.billiard;
 
+import java.util.Date;
+
 public class PoolItem {
     private String name;
     private int cue;
-    private int price;
-    private boolean free;
+    private Date date;
+    private int count;
 
-    public PoolItem(String name, int cue, int price, boolean free) {
+    public PoolItem(String name,Date date,int count) {
         this.name = name;
-        this.cue = cue;
-        this.price = price;
-        this.free = free;
+        this.date=date;
+        this.count=count;
+    }
+    public PoolItem(){
+
     }
 
     public String getName() {
@@ -21,15 +25,21 @@ public class PoolItem {
         return cue;
     }
 
-    public int getPrice() {
-        return price;
+    public Date getDate(){return date;}
+
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setFree(boolean free) {
-        this.free = free;
+    public void setDate(Date date) {
+        this.date = date;
+    }
+    public void setCount(int count) {
+        this.count = count;
     }
 
-    public boolean isFree() {
-        return free;
+    public int getCount() {
+        return count;
     }
+
 }
